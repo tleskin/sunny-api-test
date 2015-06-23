@@ -4,8 +4,6 @@ class Legislator < OpenStruct
   end
 
   def self.find_by(zipcode: "")
-    service.legislators(zipcode).map do |legislator|
-      Legislator.new(legislator)
-    end
+    service.legislators(zipcode).map { |legislator| new(legislator) }
   end
 end
